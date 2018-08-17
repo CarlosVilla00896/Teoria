@@ -6,6 +6,7 @@ package InternalFrames;
  */
 import Panels.Editar_Proveedor;
 import Panels.Insertar_Proveedor;
+import Panels.Delete_Proveedor;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 public class Proveedores extends javax.swing.JInternalFrame {
@@ -13,11 +14,13 @@ public class Proveedores extends javax.swing.JInternalFrame {
     GridBagLayout layout = new GridBagLayout();
     Insertar_Proveedor insert;
     Editar_Proveedor edit;
+    Delete_Proveedor eliminar;
     
     public Proveedores() {
         initComponents();
         insert = new Insertar_Proveedor();
         edit = new Editar_Proveedor();
+        eliminar = new Delete_Proveedor();
         this.jPanelPantalla.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
@@ -26,8 +29,12 @@ public class Proveedores extends javax.swing.JInternalFrame {
         c.gridx = 0;
         c.gridy = 0;
         this.jPanelPantalla.add(edit,c);
+        c.gridx = 0;
+        c.gridy = 0;
+        this.jPanelPantalla.add(eliminar,c);
         insert.setVisible(false);
         edit.setVisible(false);
+        eliminar.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -38,6 +45,7 @@ public class Proveedores extends javax.swing.JInternalFrame {
         jBtInsertar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jBtEditar = new javax.swing.JButton();
+        jBtEditar1 = new javax.swing.JButton();
         jPanelPantalla = new javax.swing.JPanel();
 
         setClosable(true);
@@ -66,6 +74,13 @@ public class Proveedores extends javax.swing.JInternalFrame {
             }
         });
 
+        jBtEditar1.setText("Eliminar");
+        jBtEditar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtEditar1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelBotonesLayout = new javax.swing.GroupLayout(jPanelBotones);
         jPanelBotones.setLayout(jPanelBotonesLayout);
         jPanelBotonesLayout.setHorizontalGroup(
@@ -77,7 +92,8 @@ public class Proveedores extends javax.swing.JInternalFrame {
                     .addComponent(jBtEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelBotonesLayout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 9, Short.MAX_VALUE)))
+                        .addGap(0, 9, Short.MAX_VALUE))
+                    .addComponent(jBtEditar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelBotonesLayout.setVerticalGroup(
@@ -89,7 +105,9 @@ public class Proveedores extends javax.swing.JInternalFrame {
                 .addComponent(jBtInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jBtEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jBtEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanelBotones, java.awt.BorderLayout.LINE_START);
@@ -116,17 +134,27 @@ public class Proveedores extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.insert.setVisible(true);
         this.edit.setVisible(false);
+        this.eliminar.setVisible(false);
     }//GEN-LAST:event_jBtInsertarMouseClicked
 
     private void jBtEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtEditarMouseClicked
         // TODO add your handling code here:
         this.insert.setVisible(false);
         this.edit.setVisible(true);
+        this.eliminar.setVisible(false);
     }//GEN-LAST:event_jBtEditarMouseClicked
+
+    private void jBtEditar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtEditar1MouseClicked
+        // TODO add your handling code here:
+        this.eliminar.setVisible(true);
+        this.insert.setVisible(false);
+        this.edit.setVisible(false);
+    }//GEN-LAST:event_jBtEditar1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtEditar;
+    private javax.swing.JButton jBtEditar1;
     private javax.swing.JButton jBtInsertar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanelBotones;

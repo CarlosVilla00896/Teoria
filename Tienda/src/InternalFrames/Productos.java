@@ -6,6 +6,7 @@ package InternalFrames;
  */
 import Panels.Editar_Producto;
 import Panels.Insertar_Producto;
+import Panels.Delete_Productos_Oficina;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 public class Productos extends javax.swing.JInternalFrame {
@@ -13,11 +14,13 @@ public class Productos extends javax.swing.JInternalFrame {
     GridBagLayout layout = new GridBagLayout();
     Insertar_Producto insert;
     Editar_Producto edit;
+    Delete_Productos_Oficina eliminar;
     
     public Productos() {
         initComponents();
         insert = new Insertar_Producto();
         edit = new Editar_Producto();
+        eliminar = new Delete_Productos_Oficina();
         this.jPanelPantalla.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
@@ -26,8 +29,12 @@ public class Productos extends javax.swing.JInternalFrame {
         c.gridx = 0;
         c.gridy = 0;
         this.jPanelPantalla.add(edit,c);
+        c.gridx = 0;
+        c.gridy = 0;
+        this.jPanelPantalla.add(eliminar,c);
         insert.setVisible(false);
         edit.setVisible(false);
+        eliminar.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -37,6 +44,7 @@ public class Productos extends javax.swing.JInternalFrame {
         jPanelBotones = new javax.swing.JPanel();
         jBtInsertar1 = new javax.swing.JButton();
         jBtEditar1 = new javax.swing.JButton();
+        jBtEditar2 = new javax.swing.JButton();
         jPanelPantalla = new javax.swing.JPanel();
 
         setClosable(true);
@@ -67,6 +75,13 @@ public class Productos extends javax.swing.JInternalFrame {
             }
         });
 
+        jBtEditar2.setText("Eliminar");
+        jBtEditar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtEditar2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelBotonesLayout = new javax.swing.GroupLayout(jPanelBotones);
         jPanelBotones.setLayout(jPanelBotonesLayout);
         jPanelBotonesLayout.setHorizontalGroup(
@@ -74,18 +89,21 @@ public class Productos extends javax.swing.JInternalFrame {
             .addGroup(jPanelBotonesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBtEditar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBtInsertar1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
+                    .addComponent(jBtInsertar1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                    .addComponent(jBtEditar1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                    .addComponent(jBtEditar2, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelBotonesLayout.setVerticalGroup(
             jPanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBotonesLayout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(39, 39, 39)
                 .addComponent(jBtInsertar1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(18, 18, 18)
                 .addComponent(jBtEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jBtEditar2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanelBotones, java.awt.BorderLayout.LINE_START);
@@ -124,9 +142,17 @@ public class Productos extends javax.swing.JInternalFrame {
         this.edit.setVisible(true);
     }//GEN-LAST:event_jBtEditar1MouseClicked
 
+    private void jBtEditar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtEditar2MouseClicked
+        // TODO add your handling code here:
+        this.eliminar.setVisible(true);
+        this.insert.setVisible(false);
+        this.edit.setVisible(false);
+    }//GEN-LAST:event_jBtEditar2MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtEditar1;
+    private javax.swing.JButton jBtEditar2;
     private javax.swing.JButton jBtInsertar1;
     private javax.swing.JPanel jPanelBotones;
     private javax.swing.JPanel jPanelPantalla;

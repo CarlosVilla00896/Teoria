@@ -86,7 +86,7 @@ public class daoProductos_oficina {
     public boolean eliminar(String id){
         try(
             Connection cx = c.conectar();
-            CallableStatement statement = cx.prepareCall("{CALL SP_PROVEEDORES_DELETE(?)}");
+            CallableStatement statement = cx.prepareCall("{CALL SP_PRODUCTOS_OFICINA_DELETE(?)}");
         ) {
             statement.setString(1, id);
             
@@ -102,4 +102,5 @@ public class daoProductos_oficina {
             return false;
         }
     }
+    
 }
